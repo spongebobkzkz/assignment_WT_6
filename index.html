@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment #6 — jQuery (Selectors, Effects, Animations)</title>
+  <link rel="stylesheet" href="css/custom.css">
+  <script src="js/jquery.min.js"></script>
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="header-container">
+      <a class="brand-wrap" href="index.html">
+        <span class="brand-dot"></span>
+        <span class="brand-title">PARTY<span>/</span>JQUERY</span>
+        <span class="badge-tag">Assignment #6</span>
+      </a>
+
+      <nav aria-label="Tasks Navigation">
+        <ul class="nav-tabs">
+          <li><button type="button" class="nav-tab-btn active" data-tab="tab-task1">Task 1: Detective</button></li>
+          <li><button type="button" class="nav-tab-btn" data-tab="tab-task2">Task 2: In Motion</button></li>
+          <li><a href="task1.html" class="nav-tab-btn">Task 1 Standalone &nearr;</a></li>
+          <li><a href="task2.html" class="nav-tab-btn">Task 2 Standalone &nearr;</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="sub-hero">
+    <div class="sub-hero-kicker">Astana IT University • Web Technologies (IT-2511)</div>
+    <h1 class="sub-hero-title">Assignment #6: jQuery Selectors, Effects &amp; Animations</h1>
+    <p class="sub-hero-desc">
+      Interactive birthday party crime scene investigation using jQuery selectors, traversal methods,
+      spotlight effects, zooming cards, and animated card flights.
+    </p>
+  </div>
+
+  <main class="main-content">
+    <!-- Tab Pane for Task 1 -->
+    <div id="tab-task1" class="task-pane active">
+      <iframe src="task1.html" style="width: 100%; height: 950px; border: none; border-radius: 12px; box-shadow: 0 4px 16px rgba(16,37,63,0.08);"></iframe>
+    </div>
+
+    <!-- Tab Pane for Task 2 -->
+    <div id="tab-task2" class="task-pane">
+      <iframe src="task2.html" style="width: 100%; height: 950px; border: none; border-radius: 12px; box-shadow: 0 4px 16px rgba(16,37,63,0.08);"></iframe>
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <p><strong>Assignment #6: jQuery</strong> &bull; Astana IT University &bull; Student: <strong>Beisenbay Estai</strong> (IT-2511)</p>
+  </footer>
+
+  <script>
+    $(document).ready(function() {
+      $(".nav-tab-btn[data-tab]").on("click", function() {
+        const targetId = $(this).attr("data-tab");
+        $(".nav-tab-btn[data-tab]").removeClass("active");
+        $(this).addClass("active");
+
+        $(".task-pane").removeClass("active");
+        $("#" + targetId).addClass("active");
+      });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment #6 — Task 2: The Party in Motion</title>
+  <link rel="stylesheet" href="css/custom.css">
+  <script src="js/jquery.min.js"></script>
+  <script defer src="task2.js"></script>
+</head>
+<body>
+
+  <header class="app-header">
+    <div class="header-container">
+      <a class="brand-wrap" href="index.html">
+        <span class="brand-dot"></span>
+        <span class="brand-title">PARTY<span>/</span>MOTION</span>
+        <span class="badge-tag">Task 2: Effects &amp; Animations</span>
+      </a>
+
+      <nav aria-label="Tasks Navigation">
+        <ul class="nav-tabs">
+          <li><a href="index.html" class="nav-tab-btn">All-in-One</a></li>
+          <li><a href="task1.html" class="nav-tab-btn">Task 1: Detective</a></li>
+          <li><a href="task2.html" class="nav-tab-btn active">Task 2: In Motion</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="sub-hero">
+    <div class="sub-hero-kicker">Web Technologies • Assignment #6</div>
+    <h1 class="sub-hero-title">Task 2: The Party in Motion</h1>
+    <p class="sub-hero-desc">
+      Interactive animations powered by jQuery: Spotlight fading, avatar-zoomed guest cards,
+      cross-house flights to new rooms, and smooth arrival time sorting.
+    </p>
+  </div>
+
+  <main class="main-content">
+    <div class="content-box">
+      <!-- Spotlight Toolbar -->
+      <div class="cases-panel">
+        <div class="cases-header">
+          <span class="cases-title">Spotlight Controls (Click case to highlight; others fade to 20%)</span>
+          <button id="btn-clear-spotlight" type="button" class="btn-clear">☀ Clear Spotlight</button>
+        </div>
+
+        <div class="cases-grid">
+          <button type="button" class="btn-case" data-case="1"><span class="case-num">1.</span> In the hall?</button>
+          <button type="button" class="btn-case" data-case="2"><span class="case-num">2.</span> Yellow or purple?</button>
+          <button type="button" class="btn-case" data-case="3"><span class="case-num">3.</span> AITU students upstairs?</button>
+          <button type="button" class="btn-case" data-case="4"><span class="case-num">4.</span> Glasses or bag?</button>
+          <button type="button" class="btn-case" data-case="5"><span class="case-num">5.</span> Nothing at all?</button>
+          <button type="button" class="btn-case" data-case="6"><span class="case-num">6.</span> Phone but no bag?</button>
+          <button type="button" class="btn-case" data-case="7"><span class="case-num">7.</span> Arrived 20:30-21:00?</button>
+          <button type="button" class="btn-case" data-case="8"><span class="case-num">8.</span> After 21:00 & not AITU?</button>
+          <button type="button" class="btn-case" data-case="9"><span class="case-num">9.</span> Next to Askar?</button>
+          <button type="button" class="btn-case" data-case="10"><span class="case-num">10.</span> Last in each room?</button>
+          <button type="button" class="btn-case" data-case="11"><span class="case-num">11.</span> Third in each room?</button>
+          <button type="button" class="btn-case" data-case="12"><span class="case-num">12.</span> After Timur in room?</button>
+          <button type="button" class="btn-case" data-case="13"><span class="case-num">13.</span> Before someone in black?</button>
+          <button type="button" class="btn-case" data-case="14"><span class="case-num">14.</span> Which room is Aruzhan?</button>
+          <button type="button" class="btn-case" data-case="15"><span class="case-num">15.</span> Fewer than 6 guests?</button>
+          <button type="button" class="btn-case" data-case="16"><span class="case-num">16.</span> Cup, but no glasses?</button>
+          <button type="button" class="btn-case" data-case="17"><span class="case-num">17.</span> First in each room?</button>
+          <button type="button" class="btn-case" data-case="18"><span class="case-num">18.</span> Miras joins</button>
+          <button type="button" class="btn-case" data-case="19"><span class="case-num">19.</span> Natasha leaves</button>
+          <button type="button" class="btn-case" data-case="20" style="border-color: #E04848; color: #991B1B;"><span class="case-num" style="color: #E04848;">20.</span> 🔍 Who took the cake?</button>
+        </div>
+      </div>
+
+      <!-- Result Banner -->
+      <div id="result-banner" class="result-banner">
+        <span id="result-text">Click any guest card to inspect details and move them across rooms. Click "Sort by time" in any room to reorder.</span>
+        <span class="result-badge">Effects Engine Ready</span>
+      </div>
+
+      <!-- House Architecture -->
+      <div class="house-container">
+        <div class="house-roof">
+          <div class="roof-banner">The Party, 19:30 &ndash; 22:30</div>
+        </div>
+
+        <div id="house-floors"></div>
+
+        <div class="house-legend">
+          <div class="legend-group">
+            <span>Clothing color:</span>
+            <span class="color-dot" style="background-color: #E04848;" title="Red"></span>
+            <span class="color-dot" style="background-color: #2674D9;" title="Blue"></span>
+            <span class="color-dot" style="background-color: #16A34A;" title="Green"></span>
+            <span class="color-dot" style="background-color: #1E293B;" title="Black"></span>
+            <span class="color-dot" style="background-color: #EAB308;" title="Yellow"></span>
+            <span class="color-dot" style="background-color: #8B5CF6;" title="Purple"></span>
+          </div>
+          <div class="legend-group"><span>📱 Phone</span></div>
+          <div class="legend-group"><span>👓 Glasses</span></div>
+          <div class="legend-group"><span>👜 Bag</span></div>
+          <div class="legend-group"><span>☕ Cup</span></div>
+          <div class="legend-group"><span>🍰 Cake crumbs</span></div>
+          <div class="legend-group"><span>🕒 Arrival time</span></div>
+          <div class="legend-group"><span>🎓 AITU student</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Zooming Guest Detail Modal Card -->
+  <div id="modal-overlay" class="modal-overlay"></div>
+  <div id="guest-zoom-modal" class="guest-zoom-card">
+    <button id="btn-close-zoom" class="btn-close-modal" type="button" aria-label="Close card">&times;</button>
+    <div class="zoom-header">
+      <div class="zoom-avatar">
+        <img id="modal-guest-avatar" src="" alt="Guest avatar">
+      </div>
+      <div>
+        <h3 id="modal-guest-name" style="color: var(--cargo-navy); font-weight: 800; margin: 0 0 2px 0;"></h3>
+        <span id="modal-guest-status" style="font-size: 0.8rem; font-weight: 700; color: #1E40AF;"></span>
+      </div>
+    </div>
+    <ul class="zoom-info-list">
+      <li id="modal-guest-time"></li>
+      <li id="modal-guest-color"></li>
+      <li id="modal-guest-things"></li>
+    </ul>
+    <div class="zoom-move-actions">
+      <div class="move-title">Send to another room:</div>
+      <div id="modal-move-buttons" class="move-buttons"></div>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <p><strong>Assignment #6: jQuery</strong> &bull; Astana IT University &bull; Student: <strong>Beisenbay Estai</strong> (IT-2511)</p>
+  </footer>
+
+</body>
+</html>
