@@ -628,4 +628,24 @@ $(document).ready(function() {
     const roomId = $(this).attr("data-room");
     sortRoomByTime(roomId);
   });
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const autoCase = urlParams.get("case");
+  const autoGuest = urlParams.get("guest");
+  const autoSort = urlParams.get("sort");
+
+  if (autoCase) {
+    runCase(parseInt(autoCase, 10));
+  } else if (autoGuest) {
+    setTimeout(function() {
+      const $target = $('.guest[data-name="' + autoGuest + '"]');
+      if ($target.length) {
+        openGuestModal($target);
+      }
+    }, 150);
+  } else if (autoSort) {
+    setTimeout(function() {
+      sortRoomByTime(autoSort);
+    }, 150);
+  }
 });

@@ -285,6 +285,12 @@ function runCase(caseNum) {
 $(document).ready(function() {
   buildParty(partyData);
 
+  const urlParams = new URLSearchParams(window.location.search);
+  const autoCase = urlParams.get("case");
+  if (autoCase) {
+    runCase(parseInt(autoCase, 10));
+  }
+
   $(".btn-case").on("click", function() {
     const caseNum = parseInt($(this).attr("data-case"), 10);
     runCase(caseNum);
